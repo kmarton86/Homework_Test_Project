@@ -16,6 +16,14 @@ in terminal:
 npx playwright test --headed
 
 4.
+npm install dotenv
 create .env file in root folder
 LOGIN_EMAIL=***
 LOGIN_PASSWORD=***
+
+5.
+Start Playwright recorder:
+in Powershell: npx playwright codegen https://account.aldi.us/s/login/
+
+View report at:
+http://localhost:9323
