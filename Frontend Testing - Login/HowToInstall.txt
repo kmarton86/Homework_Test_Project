@@ -1,0 +1,21 @@
+prerequisites:
+Node.js needs to be installed: https://nodejs.org
+
+1.
+in terminal:
+cd Frontend Testing - Login
+npm init -y -> package.json will be created
+
+2.
+Playwright telepítése:
+npm init playwright@latest
+
+3.
+How to run:
+in terminal:
+npx playwright test --headed
+
+4.
+create .env file in root folder
+LOGIN_EMAIL=***
+LOGIN_PASSWORD=***
