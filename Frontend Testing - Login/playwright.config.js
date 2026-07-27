@@ -9,14 +9,11 @@ export default defineConfig({
   // Where Playwright looks for tests
   testDir: './tests',
 
-
   // Run tests one by one
   workers: 1,
 
-
   // Test report
   reporter: 'html',
-
 
   // Common settings for all tests
   use: {
