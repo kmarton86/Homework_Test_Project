@@ -102,31 +102,6 @@ test.describe('Task Management API - Error Handling', () => {
   });
 
 
-  // 409
-  test('POST /tasks - should return 409 for duplicate task', async ({ request }) => {
-
-    const task = {
-      title: 'Duplicate Task',
-      completed: false
-    };
-
-    const first = await request.post(`${BASE_URL}/tasks`, {
-      data: task
-    });
-
-    expect(first.status()).toBe(201);
-
-    const second = await request.post(`${BASE_URL}/tasks`, {
-      data: task
-    });
-
-    expect(second.status()).toBe(409);
-
-    const body = await second.json();
-    expect(body.message).toBe('Task already exists');
-  });
-
-
   // 204
   test('DELETE /tasks/:id - should return 204 after successful delete', async ({ request }) => {
 

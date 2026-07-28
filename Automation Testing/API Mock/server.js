@@ -172,9 +172,12 @@ app.use((err, req, res, next) => {
 
 // TEST ONLY - Reset all tasks
 //app.delete('/reset', (req, res) => {
+
 //    tasks = [];
 //    nextId = 1;
+
 //    res.status(204).send();
+
 //});
 
 app.listen(3000, () => {

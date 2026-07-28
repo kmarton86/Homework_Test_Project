@@ -57,7 +57,7 @@ How to set up Mock server for API Testing
 
 1. 
 Navigate to Mock folder:
-cd "Automation Testing/API Mock"
+cd "Automation Testing/API Mock" or cd "API Mock"
 
 2.
 Install dependencies:
