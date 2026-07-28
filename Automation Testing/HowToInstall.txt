@@ -70,9 +70,15 @@ npm install
 
 3.
 After install
-Start mock server in new terminal:
+Start mock server:
 npm start
 
 Expected output:
 Mock Task API running on http://localhost:3000
+
+4.
+to run tests:
+open new terminal
+
+npx playwright test --project=api
 
