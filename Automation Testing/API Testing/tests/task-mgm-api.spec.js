@@ -19,7 +19,7 @@ test.describe('Task Management API Test Suite', () => {
   // POST /tasks - create a new task
   test('POST /tasks - create a new task', async ({ request }) => {
     const response = await request.post(`${BASE_URL}/tasks`, {
-      data: { title: 'Learn Playwright', completed: false },
+      data: { title: 'API Test', completed: false },
     });
 
     // Validation example - Status code
@@ -28,7 +28,7 @@ test.describe('Task Management API Test Suite', () => {
     // Validation example - Response Body
     const body = await response.json();
     expect(body).toHaveProperty('id');
-    expect(body.title).toBe('');
+    expect(body.title).toBe('API Test');
 
     taskId = body.id; 
   });

@@ -1,17 +1,23 @@
 -------------------------------------
-How to install
+How to install Playwright with _Javascript:
 
-prerequisites:
-Node.js needs to be installed: https://nodejs.org
+## Prerequisites
+- Node.js installed
+- npm installed
+if Node.js needs to be installed, find latest package in: https://nodejs.org
+
 
 1.
 in terminal:
-cd Automated Testing
+cd "Automated Testing"
 npm init -y -> package.json will be created
 
 2.
 Playwright telepítése:
 npm init playwright@latest
+
+in options: choose Javascript
+for test directory choose: tests
 
 3.
 install dotenv:
@@ -22,7 +28,7 @@ LOGIN_PASSWORD=***
 
 
 -------------------------------------
-How to run
+How to run Playwright tests
 
 1.
 
@@ -43,4 +49,22 @@ in Powershell: npx playwright codegen https://account.aldi.us/s/login/
 
 View report at:
 http://localhost:9323
+
+-------------------------------------
+How to set up Mock server for API Testing
+
+1. 
+Navigate to Mock folder:
+cd "Automation Testing/API Mock"
+
+2.
+Install dependencies:
+npm install
+
+3.
+Start mock server:
+npm start
+
+Expected output:
+Mock Task API running on http://localhost:3000
 
