@@ -18,6 +18,12 @@ class LoginPage {
 
         this.captcha = page.getByText('Anti-Robot Verification');
 
+        // TODO: pontosítsd a valós DOM alapján (pl. role="alert" vagy specifikus class)
+        this.errorMessage = page.getByText(/invalid|incorrect|hibás/i);
+
+        // TODO: cseréld olyan elemre, ami csak sikeres login után jelenik meg
+        // (pl. "My Account", "Log Out" gomb, üdvözlő szöveg)
+        this.accountMenu = page.getByRole('button', { name: /account|log out/i });
     }
 
     async open() {
@@ -34,6 +40,12 @@ class LoginPage {
             await acceptButton.click();
         }
 
+    }
+
+    async login(email, password) {
+        await this.emailInput.fill(email);
+        await this.passwordInput.fill(password);
+        await this.loginButton.click();
     }
 
 }
