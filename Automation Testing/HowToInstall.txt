@@ -3,7 +3,7 @@ Node.js needs to be installed: https://nodejs.org
 
 1.
 in terminal:
-cd Frontend Testing - Login
+cd Automated Testing
 npm init -y -> package.json will be created
 
 2.
@@ -11,19 +11,32 @@ Playwright telepítése:
 npm init playwright@latest
 
 3.
-How to run:
-in terminal:
-npx playwright test --headed
-
-4.
-npm install dotenv
+install dotenv:
+in terminal: npm install dotenv
 create .env file in root folder
 LOGIN_EMAIL=***
 LOGIN_PASSWORD=***
 
-5.
+
+-------------------------------------
+
+1.
+How to run:
+
+in terminal:
+npx playwright test --headed
+
+Frontend tests:
+npx playwright test --project=frontend
+
+API tests:
+npx playwright test --project=api
+
+
+2.
 Start Playwright recorder:
 in Powershell: npx playwright codegen https://account.aldi.us/s/login/
 
 View report at:
 http://localhost:9323
+
