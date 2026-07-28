@@ -1,0 +1,22 @@
+Bonus Questions 
+
+-------------------------------------------------
+Docker: 
+Explain what Docker is and how it can be beneficial for a QA engineer. 
+Provide a simple example of how you would set up an automated testing 
+environment using Docker.) 
+
+-------------------------------------------------
+JUnit + Selenium: 
+Describe how you would use Selenium and JUnit for automating the 
+testing of the "Delete Task" feature in the web application. 
+Include a brief sample of the test code you would write. 
+
+-------------------------------------------------
+CI Integration: 
+Explain how you would integrate your tests into a Continuous Integration (CI) 
+pipeline. Which tools and processes would you utilize to ensure that tests are 
+automatically run on each code commit or pull request? Provide an example of 
+a CI tool you have used or are familiar with. 
+
+-------------------------------------------------
