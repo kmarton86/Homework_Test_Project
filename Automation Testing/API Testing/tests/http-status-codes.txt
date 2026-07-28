@@ -1,0 +1,11 @@
+Endpoint	                Method	    Expected Status	        Expected Response
+POST /tasks	                POST	    201 Created	            JSON object containing id, title and completed
+GET /tasks/{id}	            GET	        200 OK	                Requested task object
+PUT /tasks/{id}	            PUT	        200 OK	                Updated task object
+DELETE /tasks/{id}	        DELETE	    204 No Content	        Empty response body
+POST invalid request	    POST	    400 Bad Request	        Error message explaining invalid input
+GET non-existing task	    GET	        404 Not Found	        { "message": "Task not found" }
+PUT non-existing task	    PUT	        404 Not Found	        { "message": "Task not found" }
+DELETE non-existing task	DELETE	    404 Not Found	        { "message": "Task not found" }
+Unsupported method	        PATCH	    405 Method Not Allowed	{ "message": "Method Not Allowed" }
+Server error	            GET /error	500 Internal Server Error{ "message": "Internal server error" }
