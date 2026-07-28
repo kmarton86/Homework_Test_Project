@@ -37,6 +37,10 @@ class LoginPage {
         );
 
         this.captchaLocker = page.locator('c-ciam-friendly-captcha-locker-enabled');
+
+        //Error message for invalid credentials
+        this.errorLabel = page.getByText('Oops. Login failed.');
+        this.errorMessage = page.getByText('Your email and password do not match or you may not be registered with this email address. Please try again or reset your password.')
     }
 
 

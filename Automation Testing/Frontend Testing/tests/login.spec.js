@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
+const { AccountDetailsPage } = require('../pages/AccountDetailsPage');
 
 const VALID_EMAIL = process.env.TEST_USER_EMAIL;
 const VALID_PASSWORD = process.env.TEST_USER_PASSWORD;
@@ -39,24 +40,25 @@ test.describe('ALDI Login page', () => {
     test('Test - Log in successfully with valid credentials', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
+        const accountDetailsPage = new AccountDetailsPage(page);
+
         await loginPage.open();
 
-        // NOTE: A FriendlyCaptcha miatt a Log In gomb automatizált
-        // kitöltés/kattintás esetén disabled marad, ezért a login
-        // lépéseket kikommentezve hagytam. Manuális megoldáshoz
-        // futtasd headed/debug módban, és oldd fel a captchát kézzel,
-        // mielőtt a script továbbmegy.
+        // ---------------------------
+        //CAPTCHA is not handled in this test, so the login will fail due to CAPTCHA verification. 
+        // The following lines are commented out because they would not work without handling CAPTCHA.
 
         // await loginPage.login(VALID_EMAIL, VALID_PASSWORD);
 
-        // Ha manuálisan szeretnéd megoldani a captchát futás közben,
-        // vedd ki a kommentet az alábbi sorból - a teszt megáll, amíg
-        // az Inspectorban rá nem nyomsz a "Resume"-ra:
-        // await page.pause();
-
-        // Sikeres login ellenőrzése: URL váltás és/vagy fiók-specifikus elem megjelenése
-        // await expect(page).toHaveURL(/account|dashboard/i, { timeout: 10000 });
-        // await expect(loginPage.accountMenu).toBeVisible();
+         // Sikeres login ellenőrzése: URL váltás a details oldalra
+        //await expect(page).toHaveURL(/account\.aldi\.us\/s\/details/i, { timeout: 10000 });
+ 
+        // Account Details oldal elemeinek ellenőrzése
+        //await expect(accountDetailsPage.detailsLabel).toBeVisible();
+        //await expect(accountDetailsPage.nameLabel).toBeVisible();
+        //await expect(accountDetailsPage.mobilePhoneNumberLabel).toBeVisible();
+        //await expect(accountDetailsPage.emailAddressLabel).toBeVisible();
+        //await expect(accountDetailsPage.passwordLabel).toBeVisible();
     });
 
 
@@ -65,15 +67,19 @@ test.describe('ALDI Login page', () => {
         const loginPage = new LoginPage(page);
         await loginPage.open();
 
-
-        // await loginPage.login(VALID_EMAIL, INVALID_PASSWORD);
-        // await page.pause();
+        // ---------------------------
+        //CAPTCHA is not handled in this test, so the login will fail due to CAPTCHA verification. 
+        // The following lines are commented out because they would not work without handling CAPTCHA.
+        
+        //await loginPage.login(VALID_EMAIL, INVALID_PASSWORD);
+        //await page.pause();
 
         // A felhasználó a login oldalon marad
-        // await expect(page).toHaveURL(/login/);
+        //await expect(page).toHaveURL(/login/);
 
         // Hibaüzenet megjelenik
-        // await expect(loginPage.errorMessage).toBeVisible({ timeout: 10000 });
+        //await expect(loginPage.errorLabel).toBeVisible({ timeout: 10000 });
+        //await expect(loginPage.errorMessage).toBeVisible({ timeout: 10000 });
     });
 
 });

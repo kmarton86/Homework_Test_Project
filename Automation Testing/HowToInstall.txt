@@ -39,11 +39,16 @@ npx playwright test --headed
 Frontend tests:
 npx playwright test --project=frontend
 
+3.
 API tests:
+before running API tests, please start up Mock server
+(details below)
+
+to run tests:
 npx playwright test --project=api
 
 
-3.
+4.
 Start Playwright recorder:
 in Powershell: npx playwright codegen https://account.aldi.us/s/login/
 
@@ -64,7 +69,8 @@ Install dependencies:
 npm install
 
 3.
-Start mock server:
+After install
+Start mock server in new terminal:
 npm start
 
 Expected output:
