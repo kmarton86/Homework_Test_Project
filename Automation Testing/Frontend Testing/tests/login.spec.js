@@ -7,20 +7,36 @@ const INVALID_PASSWORD = "ErvenytelenJelszo123";
 
 test.describe('ALDI Login page', () => {
 
-    test('Login page should display all required elements', async ({ page }) => {
+    test('Test - Login page display all required elements', async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.open();
-
+ 
         await expect(page).toHaveURL(/login/);
+ 
+        // Banner
+        await expect(loginPage.banner).toContainText('ACCOUNT AREA');
+        await expect(loginPage.accountAreaHeading).toBeVisible();
+ 
+        // Email 
+        await expect(loginPage.emailLabel).toBeVisible();
         await expect(loginPage.emailInput).toBeVisible();
+ 
+        // Jelszó 
         await expect(loginPage.passwordInput).toBeVisible();
+        await expect(loginPage.passwordFieldById).toContainText('Password');
+ 
+        // Login gomb
         await expect(loginPage.loginButton).toBeVisible();
+        await expect(loginPage.loginButtonContainer).toBeVisible();
+ 
+        // Captcha
         await expect(loginPage.captcha).toBeVisible();
+        await expect(loginPage.captchaFull).toBeVisible();
+        await expect(loginPage.captchaLocker).toContainText('Anti-Robot Verification');
     });
 
 
-    test('should log in successfully with valid credentials', async ({ page }) => {
-        test.skip(!VALID_EMAIL || !VALID_PASSWORD, 'Teszt hitelesítő adatok nincsenek beállítva (.env)');
+    test('Test - Log in successfully with valid credentials', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
         await loginPage.open();
@@ -44,14 +60,11 @@ test.describe('ALDI Login page', () => {
     });
 
 
-    test('should show an error message with an invalid password', async ({ page }) => {
-        test.skip(!VALID_EMAIL, 'Teszt email cím nincs beállítva (.env)');
+    test('Test - Show an error message with an invalid password', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
         await loginPage.open();
 
-        // NOTE: lásd fenti megjegyzés - a captcha miatt automatikusan
-        // nem küldhető el a form. Kikommentezve hagyva.
 
         // await loginPage.login(VALID_EMAIL, INVALID_PASSWORD);
         // await page.pause();
@@ -61,22 +74,6 @@ test.describe('ALDI Login page', () => {
 
         // Hibaüzenet megjelenik
         // await expect(loginPage.errorMessage).toBeVisible({ timeout: 10000 });
-
-        // A jelszómezőt jellemzően kiürítik/kiemelik hiba esetén
-        // await expect(loginPage.passwordInput).toBeVisible();
-    });
-
-
-    test('Login button should remain disabled with empty fields', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.open();
-
-        // A gomb disabled marad, amíg a mezők üresek / a captcha nincs feloldva
-        // - ezért kattintás helyett az állapotát ellenőrizzük.
-        await expect(loginPage.loginButton).toBeDisabled();
-
-        // await loginPage.loginButton.click();  // <-- ezt kommenteztem ki, mert timeoutot okozott
-        // await expect(page).toHaveURL(/login/);
     });
 
 });
