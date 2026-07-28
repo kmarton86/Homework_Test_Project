@@ -21,9 +21,7 @@ app.post('/tasks', (req, res) => {
         completed: req.body.completed
     };
 
-
     tasks.push(task);
-
 
     res.status(201).json(task);
 
@@ -38,13 +36,11 @@ app.get('/tasks/:id', (req, res) => {
         task => task.id == req.params.id
     );
 
-
     if (!task) {
         return res.status(404).json({
             message: "Task not found"
         });
     }
-
 
     res.status(200).json(task);
 
@@ -67,10 +63,8 @@ app.put('/tasks/:id', (req, res) => {
         });
     }
 
-
     task.title = req.body.title;
     task.completed = req.body.completed;
-
 
     res.status(200).json(task);
 
@@ -86,16 +80,13 @@ app.delete('/tasks/:id', (req, res) => {
         task => task.id == req.params.id
     );
 
-
     if (index === -1) {
         return res.status(404).json({
             message: "Task not found"
         });
     }
 
-
     tasks.splice(index,1);
-
 
     res.status(200).json({
         message: "Task deleted"

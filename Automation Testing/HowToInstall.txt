@@ -51,6 +51,8 @@ View report at:
 http://localhost:9323
 
 -------------------------------------
+INTRO: for testing the API calls, it is recommended to set up a Mock server for testing porpuse 
+
 How to set up Mock server for API Testing
 
 1. 

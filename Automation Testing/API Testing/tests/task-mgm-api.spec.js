@@ -1,10 +1,10 @@
 // API teszt suite a Task Management API-hoz
 
-// Végpontok: 
-// POST /tasks
-// GET /tasks/{id}
-// PUT /tasks/{id}
-// DELETE /tasks/{id}
+// Endpoints for testing: 
+// POST /tasks -> create a new task
+// GET /tasks/{id} -> retrieve the task
+// PUT /tasks/{id} -> update the task
+// DELETE /tasks/{id} -> delete the task
 
 
 const { test, expect } = require('@playwright/test');
@@ -16,7 +16,7 @@ let taskId;
 //  Test Management API Test Suite
 test.describe('Task Management API Test Suite', () => {
 
-  // POST /tasks - create a new task
+  // POST /tasks
   test('POST /tasks - create a new task', async ({ request }) => {
     const response = await request.post(`${BASE_URL}/tasks`, {
       data: { title: 'API Test', completed: false },
@@ -35,7 +35,7 @@ test.describe('Task Management API Test Suite', () => {
 
 
 
-  // GET /tasks/{id} - retrieve the task
+  // GET /tasks/{id}
   test('GET /tasks/{id} - retrieve the task', async ({ request }) => {
     const response = await request.get(`${BASE_URL}/tasks/${taskId}`);
 
@@ -49,7 +49,7 @@ test.describe('Task Management API Test Suite', () => {
 
 
 
-  // PUT /tasks/{id} - update the task
+  // PUT /tasks/{id}
   test('PUT /tasks/{id} - update the task', async ({ request }) => {
     const response = await request.put(`${BASE_URL}/tasks/${taskId}`, {
       data: { title: 'Learn Playwright (updated)', completed: true },
@@ -65,7 +65,7 @@ test.describe('Task Management API Test Suite', () => {
 
 
 
-  // DELETE /tasks/{id} - delete the task
+  // DELETE /tasks/{id}
   test('DELETE /tasks/{id} - delete the task', async ({ request }) => {
     const response = await request.delete(`${BASE_URL}/tasks/${taskId}`);
 
