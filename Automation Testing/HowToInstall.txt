@@ -1,3 +1,6 @@
+-------------------------------------
+How to install
+
 prerequisites:
 Node.js needs to be installed: https://nodejs.org
 
@@ -19,13 +22,14 @@ LOGIN_PASSWORD=***
 
 
 -------------------------------------
+How to run
 
 1.
-How to run:
 
 in terminal:
 npx playwright test --headed
 
+2.
 Frontend tests:
 npx playwright test --project=frontend
 
@@ -33,7 +37,7 @@ API tests:
 npx playwright test --project=api
 
 
-2.
+3.
 Start Playwright recorder:
 in Powershell: npx playwright codegen https://account.aldi.us/s/login/
 

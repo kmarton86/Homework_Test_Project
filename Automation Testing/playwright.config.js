@@ -19,7 +19,7 @@ export default defineConfig({
 
   projects: [
 
-    // Frontend UI Tests
+    // Frontend - Login Tests
     {
       name: 'frontend',
       testDir: './Frontend Testing/tests',
