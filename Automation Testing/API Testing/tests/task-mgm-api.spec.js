@@ -13,6 +13,7 @@ const BASE_URL = 'http://localhost:3000';
 // to store taskid
 let taskId;
 
+
 //  Test Management API Test Suite
 test.describe('Task Management API Test Suite', () => {
 
@@ -70,7 +71,7 @@ test.describe('Task Management API Test Suite', () => {
     const response = await request.delete(`${BASE_URL}/tasks/${taskId}`);
 
   // Validation example - Status code
-    expect(response.status()).toBe(200); 
+    expect(response.status()).toBe(204); 
   });
 
 });
