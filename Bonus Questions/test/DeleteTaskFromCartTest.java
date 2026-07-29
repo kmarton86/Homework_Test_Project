@@ -25,9 +25,6 @@ class DeleteTaskFromCartTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
-        // Ha van SELENIUM_REMOTE_URL env változó (Docker-ben ez lesz beállítva),
-        // akkor a konténerben futó Chrome-hoz csatlakozunk RemoteWebDriver-rel.
-        // Ha nincs (pl. helyi gépen futtatod IDE-ből), sima ChromeDriver-t indítunk.
         String remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
         if (remoteUrl != null && !remoteUrl.isBlank()) {
             driver = new RemoteWebDriver(new URL(remoteUrl), options);
@@ -40,9 +37,15 @@ class DeleteTaskFromCartTest {
 
     @Test
     void deletingItemFromCart_removesItFromCartList() {
+        
         // 1. Storefront megnyitása
         driver.get("https://www.aldi.us/store/aldi/storefront");
         
+        // ------------- PRE-CONDITIONS ----------------
+        // TODO: Pre Condition steps are loaded, working and asserted
+        // 1. Store should be choosen
+        // 2. At least 1 Product added to cart
+
         // CHOOSE STORE 
         WebElement chooseStore = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("/html/body/div[12]/div[1]/div/div[1]/div[3]/button[1]/div/div")));
@@ -52,11 +55,15 @@ class DeleteTaskFromCartTest {
                 By.xpath("//*[@id="id-99"]/div[2]/button")));
         confirmButton.click();
 
-        // 2. Add-to-cart gomb
+        
+        // ------------- TEST ----------------
+        // Test Delete function
+        // TODO: Add Assertion for each eleemnt - Element is present and working
+
         WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@id='store-wrapper']/div/div/div[4]/div/div/div/div/div/div/div[2]/ul/li/div/div/div/div/div/div/button")));
         addToCartBtn.click();
-
+        
         // 3. Shopping List (kosár) ikon
         WebElement cartIcon = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@id='js-app']/div/header/div[2]/div[2]/span/button/span")));
@@ -77,7 +84,10 @@ class DeleteTaskFromCartTest {
                 By.xpath("//div[@id='id-282']/button[4]/span/div")));
         confirmDeleteBtn.click();
 
-        // --- Assert ---
+         // ------------- Assert ----------------
+        //  TODO: Add Assertion for each eleemnt
+        //  1. Assert Shopping List is empty
+        //  2. Assert Price is 0.00 or empty
         List<WebElement> remainingItems = driver.findElements(
                 By.xpath("//div[@id='cart_dialog']//*[contains(text(),'Meat & Seafood')]"));
 
