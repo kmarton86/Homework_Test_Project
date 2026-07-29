@@ -22,11 +22,11 @@ test.describe('ALDI Login page', () => {
         await expect(loginPage.emailLabel).toBeVisible();
         await expect(loginPage.emailInput).toBeVisible();
  
-        // Jelszó 
+        // Password 
         await expect(loginPage.passwordInput).toBeVisible();
         await expect(loginPage.passwordFieldById).toContainText('Password');
  
-        // Login gomb
+        // Login button
         await expect(loginPage.loginButton).toBeVisible();
         await expect(loginPage.loginButtonContainer).toBeVisible();
  
@@ -48,10 +48,11 @@ test.describe('ALDI Login page', () => {
         //CAPTCHA is not handled in this test, so the login will fail due to CAPTCHA verification. 
         // The following lines are commented out because they would not work without handling CAPTCHA.
 
+        // LOGIN
         // await loginPage.login(VALID_EMAIL, VALID_PASSWORD);
 
-         // Sikeres login ellenőrzése: URL váltás a details oldalra
-        //await expect(page).toHaveURL(/account\.aldi\.us\/s\/details/i, { timeout: 10000 });
+        // Success login - redirected to Account Details page
+        // await expect(page).toHaveURL(/account\.aldi\.us\/s\/details/i, { timeout: 10000 });
  
         // Account Details oldal elemeinek ellenőrzése
         //await expect(accountDetailsPage.detailsLabel).toBeVisible();
@@ -71,13 +72,14 @@ test.describe('ALDI Login page', () => {
         //CAPTCHA is not handled in this test, so the login will fail due to CAPTCHA verification. 
         // The following lines are commented out because they would not work without handling CAPTCHA.
         
-        //await loginPage.login(VALID_EMAIL, INVALID_PASSWORD);
+        // LOGIN with invalid password
+        // await loginPage.login(VALID_EMAIL, INVALID_PASSWORD);
         //await page.pause();
 
-        // A felhasználó a login oldalon marad
-        //await expect(page).toHaveURL(/login/);
+        // Tester stays on login page
+        // await expect(page).toHaveURL(/login/);
 
-        // Hibaüzenet megjelenik
+        // Error message is displayed
         //await expect(loginPage.errorLabel).toBeVisible({ timeout: 10000 });
         //await expect(loginPage.errorMessage).toBeVisible({ timeout: 10000 });
     });

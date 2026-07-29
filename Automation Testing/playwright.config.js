@@ -19,12 +19,23 @@ export default defineConfig({
 
   projects: [
 
-    // Frontend - Login Tests
+    // Frontend - Login Tests - Chrome
     {
-      name: 'frontend',
+      name: 'frontend-chrome',
       testDir: './Frontend Testing/tests',
       use: {
         ...devices['Desktop Chrome'],
+      },
+    },
+
+
+    // Frontend - Login Tests - Edge
+    {
+      name: 'frontend-edge',
+      testDir: './Frontend Testing/tests',
+      use: {
+        ...devices['Desktop Edge'],
+        channel: 'msedge',
       },
     },
 

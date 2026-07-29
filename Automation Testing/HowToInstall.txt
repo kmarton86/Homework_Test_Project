@@ -38,7 +38,12 @@ npx playwright test --headed
 
 2.
 Frontend tests:
-npx playwright test --project=frontend
+
+in chrome:
+npx playwright test --project=frontend-chrome
+
+in Edge:
+npx playwright test --project=frontend-chrome
 
 3.
 API tests:
