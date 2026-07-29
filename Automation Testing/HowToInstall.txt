@@ -22,6 +22,7 @@ for test directory choose: tests
 3.
 install dotenv:
 in terminal: npm install dotenv
+
 create .env file in root folder
 LOGIN_EMAIL=***
 LOGIN_PASSWORD=***
@@ -81,4 +82,25 @@ to run tests:
 open new terminal
 
 npx playwright test --project=api
+
+-------------------------------------
+Project structure:
+
+API Mock folder:
+    package.json
+    server.json -> Mock server
+
+API Testing folder:
+    tests:
+        ...spec.js files -> api tests
+
+Frontend Testing folder:
+    pages:
+        ...Page.js fles -> page object models
+    tests:
+        login.spec.js -> frontend tests
+
+.env
+package.json
+playwright.config.js
 
