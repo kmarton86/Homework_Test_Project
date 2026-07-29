@@ -4,7 +4,32 @@ Bonus Questions
 Docker: 
 Explain what Docker is and how it can be beneficial for a QA engineer. 
 Provide a simple example of how you would set up an automated testing 
-environment using Docker.) 
+environment using Docker.
+
+Answer:
+
+Docker is a tool that allows user to create and run applications in isolated environments in containers. 
+
+It includes everything that an application needs to work, such as the code, libraries, and dependencies. 
+This helps to make sure that the application runs the same way on different machines.
+
+Also it can be useful because it makes setting up test environments easier and faster.
+Instead of installing all required tools manually, testers can use a ready-made Docker image that contains 
+the application and testing dependencies.
+
+Example:
+
+1.Create a Docker image that contains the application with required programming language, and testing tools (for example Selenium or Playwright).
+2.Run the application inside a Docker container.
+3.Execute automated tests inside another container that connects to the application.
+4.After the tests finish, the containers can be removed and recreated easily.
+
+For 2nd task (JUnit + Selenium) I made the selenium test dockerized. 
+docker files are created:
+docker-compose.yml
+dockerfile
+
+howToRun.txt containst the basic docker commands to build images and run test
 
 -------------------------------------------------
 JUnit + Selenium: 
@@ -12,11 +37,48 @@ Describe how you would use Selenium and JUnit for automating the
 testing of the "Delete Task" feature in the web application. 
 Include a brief sample of the test code you would write. 
 
+Answer:
+Please take a look at the sample test file located in test folder, called DeleteTaskFromCartTest.java.
+
+This is a sample file and it is not working correctly, still in TODO state. 
+But in concept I would do is this:
+
+- Use pre condition part imported as a module if already exists:
+    - Selenium navigates to the site
+    - chooses In-Store option
+    - Add at least 1 item into the Shopping List
+
+- Test:
+    - Selenium navigates to Shopping List
+    - Asserts all elements in Shopping List
+    - Selenium uses selectors for div or id names if poosible, or text elements
+    - use xpath only if no other selector is working
+    - store elements in variables in similar way as Page Object model - in this way codebase maintenance will be easier
+
+    - Do the remove activity
+    - Assert item(s) are removed
+    - Assert Shopping List is empty
+    - Assert price is updated accordingly
 -------------------------------------------------
 CI Integration: 
 Explain how you would integrate your tests into a Continuous Integration (CI) 
 pipeline. Which tools and processes would you utilize to ensure that tests are 
 automatically run on each code commit or pull request? Provide an example of 
 a CI tool you have used or are familiar with. 
+
+Answer:
+
+CI integration means connecting automated tests to a Continuous Integration pipeline so that tests run automatically 
+whenever new code is pushed or a pull request is created.
+
+I would integrate tests by creating a CI pipeline that checks out the latest code, installs the required dependencies, 
+runs automated tests, and generates test reports. If the tests fail, the pipeline should stop and notify the team about the issue.
+
+A common CI tool is Jenkins. I have basic knowledge of Jenkins and I understand its main purpose: 
+it can automatically trigger builds and test executions after code changes. For example, Jenkins can be connected to 
+a Git repository and run automated Selenium or API tests after every commit to make sure that new changes 
+do not break existing functionality.
+
+Other CI tools like GitHub Actions or GitLab CI can also be used for similar processes.
 
 -------------------------------------------------
