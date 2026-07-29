@@ -1,0 +1,15 @@
+# 1. Image-ek letöltése / build
+docker compose pull selenium-chrome
+docker compose build test-runner
+
+# 2. Chrome konténer indítása (élő megtekintéshez)
+docker compose up -d selenium-chrome
+
+# 3. (opcionális) élő nézet böngészőben:
+# http://localhost:7900  → jelszó: secret
+
+# 4. Teszt futtatása
+docker compose up test-runner
+
+# 5. Leállítás
+docker compose down

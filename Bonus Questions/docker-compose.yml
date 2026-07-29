@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb          # Chrome összeomlik ez nélkül a kevés shared memory miatt
+    ports:
+      - "4444:4444"        # Selenium Grid / WebDriver endpoint
+      - "7900:7900"        # noVNC - böngészőben megnézheted élőben, mit csinál a teszt (jelszó: secret)
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444/wd/hub/status"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  test-runner:
+    build: .
+    depends_on:
+      selenium-chrome:
+        condition: service_healthy
+    environment:
+      - SELENIUM_REMOTE_URL=http://selenium-chrome:4444/wd/hub
+    volumes:
+      - ./target:/app/target   # a teszteredmények (surefire riportok) kikerülnek a host gépre is
