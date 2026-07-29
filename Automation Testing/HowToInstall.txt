@@ -37,12 +37,14 @@ in terminal:
 npx playwright test --headed
 
 2.
-Frontend tests:
+Run Frontend tests:
 
-in chrome:
+in terminal: cd "Automation Testing"
+
+chrome:
 npx playwright test --project=frontend-chrome
 
-in Edge:
+Edge:
 npx playwright test --project=frontend-chrome
 
 3.
