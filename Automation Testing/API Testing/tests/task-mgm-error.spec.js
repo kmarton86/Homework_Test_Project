@@ -5,6 +5,12 @@ const BASE_URL = 'http://localhost:3000';
 
 test.describe('Task Management API - Error Handling', () => {
 
+  // Reset the MOCK server before tests
+  test.beforeAll(async ({ request }) => {
+      const response = await request.delete(`${BASE_URL}/reset`);
+      expect(response.status()).toBe(204);
+    });
+
   // 400 - Missing title
   test('POST /tasks - should return 400 when title is missing', async ({ request }) => {
 
@@ -101,7 +107,30 @@ test.describe('Task Management API - Error Handling', () => {
     expect(body.message).toBe('Method Not Allowed');
   });
 
+  // 409
+  test('POST /tasks - should return 409 for duplicate task', async ({ request }) => {
 
+    const task = {
+      title: 'Duplicate Task',
+      completed: false
+    };
+
+    const first = await request.post(`${BASE_URL}/tasks`, {
+      data: task
+    });
+
+    expect(first.status()).toBe(201);
+
+    const second = await request.post(`${BASE_URL}/tasks`, {
+      data: task
+    });
+
+    expect(second.status()).toBe(409);
+
+    const body = await second.json();
+    expect(body.message).toBe('Task already exists');
+  });
+  
   // 204
   test('DELETE /tasks/:id - should return 204 after successful delete', async ({ request }) => {
 

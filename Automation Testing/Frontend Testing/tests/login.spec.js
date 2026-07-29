@@ -1,11 +1,14 @@
 const { test, expect } = require('@playwright/test');
+// Load Page objects
 const { LoginPage } = require('../pages/LoginPage');
 const { AccountDetailsPage } = require('../pages/AccountDetailsPage');
 
+// Credentials for testing
 const VALID_EMAIL = process.env.TEST_USER_EMAIL;
 const VALID_PASSWORD = process.env.TEST_USER_PASSWORD;
 const INVALID_PASSWORD = "ErvenytelenJelszo123";
 
+// Test suite for ALDI Login page
 test.describe('ALDI Login page', () => {
 
     test('Test - Login page display all required elements', async ({ page }) => {
